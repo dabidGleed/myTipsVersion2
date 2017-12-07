@@ -1,0 +1,39 @@
+ionic cordova plugin add cordova-plugin-x-socialsharing
+ionic cordova plugin add cordova-plugin-device
+ionic cordova plugin add cordova-plugin-admobpro
+
+Add google-services.json in android/cordova and android folder
+
+uninstall 
+ionic plugin remove cordova-plugin-fcm
+
+    ionic cordova plugin remove phonegap-plugin-push --variable SENDER_ID=543595891066 --save
+
+        then
+
+    ionic cordova plugin add phonegap-plugin-push --variable SENDER_ID=543595891066 --save
+
+  ionic state restore
+  // installs all plugins
+
+  ionic cordova plugin add git://github.com/apache/cordova-plugin-splashscreen.git
+
+  cordova plugin add cordova-plugin-splashscreen
+
+  ionic cordova resources --splash
+
+
+ionic run android -l -c
+Changed to below
+ionic cordova run android -lc -- -d
+
+cordova platform add android@6.1.2
+
+ionic cordova plugin add ionic-plugin-keyboard
+npm install --save @ionic-native/keyboard
+
+ionic issue
+delete .ionic folder in c:\user\accountname\.ionic & install npm install --save-dev --save-exact ionic@latest
+
+GENERATE SHA
+keytool -exportcert -list -v -alias alias_name -keystore my-release-key.keystore

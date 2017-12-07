@@ -1,0 +1,45 @@
+<ion-header class="header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-3>
+                <ion-icon navPop name="ios-arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col col-6>
+                <h4 class="heading">Favourites</h4>
+            </ion-col>
+            <ion-col col-3>
+                <ion-icon (click)="showSearch()" md="md-search"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="search" class="search">
+        <ion-row>
+            <ion-col col-12>
+                <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()">
+                </ion-searchbar>
+                <ion-icon class="closeButton" (click)=" hideSearch()" md="ios-close-circle-outline"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content>
+    <ion-card (click)="callPost(favourite)" *ngFor="let favourite of favourites">
+        <ion-card-content class="favCard">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-3 class="fav">
+                        <div class="favImage">
+                            <img src="{{(favourite.images[0])}}">
+                        </div>
+                    </ion-col>
+                    <ion-col col-9 class="para">
+                        <h3 [innerHTML]="renderContent(favourite.title)"></h3>
+                        <div class="categoryName" *ngIf="currentCategoryId">
+                            <h5>{{favourite.category}}</h5>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

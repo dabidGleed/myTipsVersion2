@@ -1,0 +1,62 @@
+<ion-header class="header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-3>
+                <ion-icon navPop name="ios-arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col col-6>
+                <span class="vendorHeading">Tips by</span>
+                <h4 class="vendorName"  [innerHTML]="renderContent(Name)"></h4>
+            </ion-col>
+            <ion-col col-3>
+                <ion-icon (click)="showSearch()" md="md-search"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="search" class="search">
+        <ion-row>
+            <ion-col col-12 class="searchbar">
+                <ion-icon class="closeButton" (click)=" hideSearch()" md="ios-close-circle-outline"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content>
+
+    <ion-card (click)="callPost(tip)" *ngFor="let tip of tips">
+        <div class="postImg">
+
+            <span class="video" [ngClass]="tip.videos.length == 0 ? 'hide' : 'show'"><img src="assets/images/play-btn.png"></span>
+            <img src="{{changeImage(tip.images)}}">
+        </div>
+        <ion-card-content class="card-content">
+            <ion-card-title class="title">
+                <h4>{{tip.title}} <span class="date">{{changeDate(tip.createdAt)}}</span></h4>
+            </ion-card-title>
+            <div class="para" [innerHTML]="renderContent(tip.description)"></div>
+            <ion-grid class="icons">
+                <ion-row class="rflex">
+                    <div class="reviews">
+                        <ion-icon class="happyIcon icon ion-ios-happy-outline"></ion-icon>
+                        <span>{{tip.likes.length}}</span>
+                        <ion-icon class="heartIcon icon ion-md-heart-outline"></ion-icon>
+                        <span>{{tip.favourites.length}}</span>
+                        <ion-icon md="ios-eye-outline"></ion-icon>
+                        <span>{{tip.views.length}}</span>
+                        <div class="iconA">
+                            <span *ngIf="gender(tip.genderSpecific,'female')"><img src="assets/images/femaleIcon.png"></span>
+                            <span *ngIf="gender(tip.genderSpecific,'male')"><img src="assets/images/maleIcon.png"></span>
+                        </div>
+                    </div>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <div class="noPost" *ngIf="tips.length == 0 && searchTerm != ''">
+        Sorry,we haven't found any results matching this search.
+    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

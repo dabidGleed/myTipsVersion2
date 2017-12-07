@@ -1,0 +1,53 @@
+<ion-header class="header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-3>
+                <ion-icon navPop name="ios-arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col class="heading" col-6>
+                <img class="headLogo" src="assets/images/logo-small.png">
+            </ion-col>
+            <ion-col col-3>
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content>
+    <div class="content-md">
+        <div class="postBlock scroll-content">
+            <div (click)="playVideo(tip.videos[0])" class="postImg">
+                <span class="video" [ngClass]="tip.videos.length == 0 ? 'hide' : 'show'"> <img src="assets/images/play-btn.png"></span>
+                <img style="width:100%" src="{{changeImage(tip.images)}}">
+            </div>
+            <div class="postContent">
+                <div class="postHead">
+                    <div class="postReview">
+                        <h4>{{titleSp}} <span class="postDate">{{changeDate(tip.createdAt)}}</span></h4>
+                        <div class="reviews">
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col col-3 (click)="likePost(tip.id, tip.likes, iconLike(tip.likes).length)">
+                                        <ion-icon [ngClass]=" iconLike(tip.likes).length == 0 ? 'ion-ios-happy-outline' : 'ion-ios-happy'" class="happyIcon icon"></ion-icon>
+                                        <span>{{tip.likes.length}}</span>
+                                    </ion-col>
+                                    <ion-col col-3 (click)="favoritePost(tip.id, tip.favourites, iconFav(tip.favourites).length)">
+                                        <ion-icon [ngClass]=" iconFav(tip.favourites).length == 0 ? 'ion-md-heart-outline' : 'ion-md-heart'" class="heartIcon icon"></ion-icon>
+                                        <span>{{tip.favourites.length}}</span>
+                                    </ion-col>
+                                    <ion-col col-3 (click)="otherShare(tip)">
+                                        <ion-icon class="share" md="md-share"></ion-icon>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="postField">
+                    <div class="contentCSS" [innerHTML]="tip.description"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

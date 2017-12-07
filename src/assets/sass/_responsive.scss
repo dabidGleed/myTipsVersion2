@@ -1,0 +1,61 @@
+
+
+/* ----------- Galaxy Tab 10.1 ----------- */
+
+/* Portrait and Landscape */
+@media 
+  (min-device-width: 600px) 
+  and (max-device-width: 1280px) {
+
+      .header{
+    
+        font-size: 30px;
+      }
+    .search{
+            position: absolute;
+            top: -10px
+        }
+    
+         .toolbar-title-md{
+
+        line-height: 60px;
+    
+    } 
+
+     .tabs-md .tab-button{
+    
+        min-height: 50px;
+       
+    } 
+    .tabs-md .tab-button-text{
+         font-size: 16px;
+    }
+    .grid{
+      
+        padding: 4px;
+    }
+    .headLogo{
+         margin-top: 10px;
+    }
+     .searchbar-md{
+        padding: 9px !important;
+    }
+     .searchbar-md .searchbar-input{
+        height: 47px;
+    }
+}
+
+/* Portrait */
+@media 
+  (max-device-width: 600px) 
+  and (orientation: portrait) { 
+
+}
+
+/* Landscape */
+@media 
+  (max-device-width: 1280px) 
+  and (orientation: landscape) { 
+
+}
+

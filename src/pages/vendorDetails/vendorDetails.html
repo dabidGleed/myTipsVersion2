@@ -1,0 +1,81 @@
+<ion-header class="header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-3>
+                <ion-icon navPop name="ios-arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col class="heading" col-6>
+                <h4 class="heading">Details</h4>
+            </ion-col>
+            <ion-col col-3>
+                <ion-icon name="ios-home-outline" (click)="HomePage()"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content>
+    <div class="content-md">
+        <div class="postBlock scroll-content">
+            <div class="postContent">
+                <div class="postReview">
+                    <ion-row>
+                        <ion-col col-4>
+                            <div class="VendorImg">
+                                <img src="{{user.userDetails.image ? user.userDetails.image : 'assets/images/1.png'}}">
+                            </div>
+                        </ion-col>
+                        <ion-col col-8>
+                            <div class="vendordetail">
+                                <ion-col col-12 float-left class="vendorName" *ngIf="user.firstName != ''">
+                                    <h4> {{user.firstName}}</h4>
+                                </ion-col>
+                                <ul>
+                                    <li *ngIf="user.userDetails.bussinessRole != ''">@{{user.userDetails.bussinessRole}}</li>
+                                    <li *ngIf="user.email != ''"><i class="fa fa-envelope-o detailIcons" aria-hidden="true"></i>{{user.email}}</li>
+                                    <li *ngIf="user.mobileNumber != ''"><i class="fa fa-phone detailIcons" aria-hidden="true"></i>{{user.mobileNumber}}</li>
+                                    <li *ngIf="address(user.userDetails) != '.'"><i class="fa fa-thumb-tack detailIcons" aria-hidden="true"></i>{{address(user.userDetails)}}</li>
+                                    <li><a *ngIf="user.userDetails.facebook != ''" href="{{user.userDetails.facebook}}"><i class="fa fa-facebook icon" aria-hidden="true"></i></a>
+                                        <a *ngIf="user.userDetails.twitter != ''" href="{{user.userDetails.twitter}}"><i class="fa fa-twitter icon" aria-hidden="true"></i></a>
+                                        <a *ngIf="user.userDetails.googlePlus != ''" href="{{user.userDetails.googlePlus}}"><i class="fa fa-google-plus icon" aria-hidden="true"></i></a>
+                                        <a *ngIf="user.userDetails.linkedin != ''" href="{{user.userDetails.linkedin}}"><i class="fa fa-linkedin icon" aria-hidden="true"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                </div>
+                <div class="postField">
+                    <h5><span>About</span></h5>
+                    <p>{{user.userDetails.about}}</p>
+                </div>
+                <div class="clear"></div>
+                <div class="mapPost">
+                    <div #map id="map">
+                    </div>
+                    <ion-row class="vendorposts card">
+                        <ion-card (click)="callPost(tip)" class="recentTip col" *ngFor="let tip of tips">
+                            <div class="tipImg" [style.background-image]="'url(' + tip.images + ')'"></div>
+                            <ion-card-content>
+                                <ion-card-title>
+                                    {{renderContent(tip.title)}}
+                                </ion-card-title>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-row>
+
+                    <ion-row>
+                        <button (click)="setVendortips(user.id,user.firstName)" ion-button block class="viewMore">View More</button>
+                    </ion-row>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk-B8"></script>
+
+
+</ion-content>

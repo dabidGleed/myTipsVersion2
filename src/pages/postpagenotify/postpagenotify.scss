@@ -1,0 +1,110 @@
+page-postpage2 {
+    .clear {
+        clear: both
+    }
+    ion-content {
+        background: $body-color !important;
+    }
+    .postBlock {
+        padding-bottom: 30px;
+        .postImg {
+            z-index: 99;
+            position: relative;
+        }
+        .postContent {
+            margin: 0 20px;
+            margin-top: -12px;
+            z-index: 999;
+            position: relative;
+            background: $color-white;
+            -webkit-box-shadow: 0px 0px 8px 0px rgba(122, 120, 122, 1);
+            -moz-box-shadow: 0px 0px 8px 0px rgba(122, 120, 122, 1);
+            box-shadow: 0px 0px 8px 0px rgba(122, 120, 122, 1);
+            width: calc(100% - 40px);
+            .postHead {
+                padding: 15px 10px 0px;
+                border-bottom: 1px solid lighten($color-gray, 32%);
+                .postReview {
+                    h4 {
+                        color: $heading-color;
+                        font-weight: 700;
+                        font-family: 'Ropa Sans', sans-serif;
+                        font-size: 18px;
+                        margin: 0px;
+                        padding: 10px 70px 0px 0px;
+                        position: relative;
+                        .postDate {
+                            line-height: 5px;
+                            color: $color-gray;
+                            font-family: 'Ropa Sans', sans-serif;
+                            position: absolute;
+                            right: 0px;
+                            font-size: 11px;
+                            margin-top: -5px;
+                            top: 50%;
+                            line-height: 10px;
+                        }
+                    }
+                    .reviews {
+                        .heartIcon {
+                            font-size: 1em;
+                            color: $color-red;
+                            line-height: 1.5em;
+                            display: inline-block;
+                        }
+                        .happyIcon {
+                            color: $color-green;
+                            font-size: 1em;
+                            line-height: 1.5em;
+                            display: inline-block;
+                        }
+                        span {
+                            font-size: 0.7em;
+                            margin-right: 15px;
+                            font-family: 'Roboto', sans-serif;
+                            line-height: 1em;
+                            display: inline-block;
+                        }
+                        .share {
+                            font-size: 0.8em;
+                            background-color: $color-green;
+                            color: white;
+                            border-radius: 3em;
+                            line-height: 1.3em;
+                            width: 1.3em;
+                            text-align: center;
+                            padding-right: 2px;
+                        }
+                    }
+                }
+            }
+            .postField {
+                padding: 10px;
+                margin-bottom: 10px;
+                p {
+                    font-size: 1em;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 400;
+                    line-height: 1.5em;
+                    color: $heading-color;
+                }
+            }
+        }
+    }
+    .swiper-slide img {
+        height: auto;
+        width: 100%;
+    }
+    .scroll-content {
+        text-align: left;
+    }
+    .contentCSS {
+        img {
+            width: 100%;
+            height: auto;
+        }
+        li {
+            font-size: 1em !important;
+        }
+    }
+}

@@ -1,0 +1,63 @@
+<ion-header class="header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-3>
+                <ion-icon name="ios-arrow-back" (click)="backToCategory()"></ion-icon>
+            </ion-col>
+            <ion-col col-6>
+                <h4 class="heading">{{category}}</h4>
+            </ion-col>
+            <ion-col col-3>
+                <ion-icon (click)="showSearch()" md="md-search"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="search" class="search">
+        <ion-row>
+            <ion-col col-12 class="searchbar">
+                <ion-searchbar #focusInputA (keyup.enter)="searchItems()" [(ngModel)]="searchTerm">
+                </ion-searchbar>
+                <ion-icon class="closeButton" (click)=" hideSearch()" md="ios-close-circle-outline"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content>
+    <ion-tabs>
+        <ion-tab tabTitle="Yoga" [root]="tab1"></ion-tab>
+        <ion-tab tabTitle="Beauty" [root]="tab2"></ion-tab>
+        <ion-tab tabTitle="Fitness" [root]="tab3"></ion-tab>
+    </ion-tabs>
+    <ion-card (click)="callPost(tip)" *ngFor="let tip of tips">
+        <div class="postImg">
+            <span class="video" [ngClass]="tip.videos.length == 0 ? 'hide' : 'show'"><img src="assets/images/play-btn.png"></span>
+            <img src="{{changeImage(tip.images)}}">
+        </div>
+        <ion-card-content class="card-content">
+            <ion-card-title class="title">
+                <h4>{{tip.title}} <span class="date">{{changeDate(tip.createdAt)}}</span></h4>
+            </ion-card-title>
+            <div class="para" [innerHTML]="renderContent(tip.description)"></div>
+            <ion-grid class="icons">
+                <ion-row>
+                    <div class="reviews">
+                        <ion-icon class="happyIcon icon ion-ios-happy-outline"></ion-icon>
+                        <span>{{tip.likes.length}}</span>
+                        <ion-icon class="heartIcon  icon ion-md-heart-outline"></ion-icon>
+                        <span>{{tip.favourites.length}}</span>
+                        <ion-icon md="ios-eye-outline"></ion-icon>
+                        <span>{{tip.views.length}}</span>
+                    </div>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <div class="noPost" *ngIf="tips.length == 0 && searchTerm != ''">
+        Sorry,we haven't found any results matching this search.
+    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header class="comments">
+    <ion-grid>
+        <ion-row navPop>
+            <ion-col col-1>
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </ion-col>
+            <ion-col col-6 class="commentsHeading">
+                <h4 class="reply">Reply</h4>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content padding class="login sample-modal-page">
+    <div class="comment">
+        <div *ngFor="let comment of replyComments" class="comment-wrap">
+            <div class="photo">
+                <div class="avatar" style="background-image: url('assets/images/1.png')"></div>
+            </div>
+            <div class="comment-block">
+                <h4 class="Username">{{comment.user.firstName}}</h4>
+                <p class="comment-text">{{comment.commentText}}</p>
+                <ion-grid>
+                    <ion-row>
+                        <span>{{changeDate(comment.created_at)}}</span>
+                        <span>Likes</span>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+    </div>
+
+</ion-content>
+<ion-footer>
+    <input #focusInputf type="text" name="comment" [(ngModel)]="replyComment" placeholder="write a comment">
+    <ion-icon (click)="replyComment!='' && addComments(replyComment)" class="send" (keyup.enter)="commentBox()" ios="ios-send" md="md-send"></ion-icon>
+</ion-footer>

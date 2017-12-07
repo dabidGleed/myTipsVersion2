@@ -1,0 +1,31 @@
+<ion-header class="header">
+    <ion-grid>
+        <ion-row>
+            <ion-col col-3>
+                <ion-icon (click)="postPagefirst()" name="ios-arrow-back"></ion-icon>
+            </ion-col>
+            <ion-col col-6>
+                <h4 class="heading">Mytips</h4>
+            </ion-col>
+            <ion-col col-3>
+                <ion-icon (click)="FavouritePage()" name="heart-outline"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4 *ngFor="let category of categories | orderBy :'name':false" (click)="setCategory(category.name,category.id,category.genderSpecific)">
+                <ion-card class="categoryList ">
+                    <div class="catgImg ">
+                        <div class="categImg">
+                            <img src="{{category.imageURL}}">
+                        </div>
+                        <span class="category"> {{category.name}}</span>
+                    </div>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

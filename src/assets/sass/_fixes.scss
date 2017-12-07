@@ -1,0 +1,11 @@
+.ios,
+.md,
+.wp {
+    .disable-ripple ion-tab-effect {
+       display: none;
+    }
+}
+
+ion-tabs .button-effect {
+ display:none !important;
+}

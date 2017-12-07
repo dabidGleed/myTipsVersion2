@@ -1,0 +1,157 @@
+page-vendorDetails {
+    .content-md {
+        background-color: #f6f6f6;
+    }
+    .clear {
+        clear: both
+    }
+    .postContent {
+        .postReview {
+            margin: 0px auto;
+            width: 80%;
+            .VendorImg {
+                position: relative;
+                width: 60px;
+                img {
+                    border-radius: 50%;
+                    height: auto;
+                    margin: 35px -27px;
+                    width: 95px;
+                    max-width: none !important;
+                    -webkit-box-shadow: 0px 0px 7px 3px rgba(214, 207, 214, 1);
+                    -moz-box-shadow: 0px 0px 7px 3px rgba(214, 207, 214, 1);
+                    box-shadow: 0px 0px 7px 3px rgba(214, 207, 214, 1);
+                }
+            }
+            .vendordetail {
+                .vendorName {
+                    h4 {
+                        margin-bottom: 0px;
+                        margin-top: 0;
+                    }
+                }
+                ul {
+                    list-style: none;
+                    padding: 0px;
+                    margin: 0px;
+                    li {
+                        margin-top: 10px;
+                        position: relative;
+                        &+li {
+                            padding-left: 20px;
+                            min-height: 20px;
+                        }
+                        &:last-child {
+                            padding-left: 0px;
+                        }
+                        .icon {
+                            font-size: 0.8em;
+                            border-radius: 3em;
+                            border: 1px solid;
+                            line-height: 1.3em;
+                            width: 2.3em;
+                            text-align: center;
+                            padding: 4px;
+                            margin-right: 5px;
+                        }
+                        a {
+                            color: #000;
+                        }
+                    }
+                }
+                .detailIcons {
+                    margin-right: 10px;
+                    left: 0;
+                    position: absolute;
+                    top: 2px;
+                }
+            }
+        }
+        .postField {
+            h5 {
+                position: relative;
+                margin-bottom: 0;
+                margin-top: 0;
+                font-size: 15px;
+                span:after {
+                    background-color: #dee3ea;
+                    content: "";
+                    display: block;
+                    height: 1px;
+                    position: absolute;
+                    top: 50%;
+                    width: 100%;
+                    margin-left: 50px;
+                }
+            }
+            padding: 10px;
+            p {
+                font-size: 1em;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 400;
+                line-height: 1.5em;
+                color: $heading-color;
+                margin-bottom: 10px;
+            }
+        }
+        .map {
+            img {
+                width: 100%;
+            }
+        }
+        .map>iframe {
+            width: 100%;
+        }
+        .mapPost {
+            position: relative;
+            .map {
+                position: relative;
+                z-index: 0;
+            }
+            .vendorposts.row {
+                width: 100%;
+                .recentTip {
+                    position: relative;
+                    .tipImg {
+                        position: relative;
+                        height: 150px;
+                        background-position: center;
+                        background-size: cover;
+                        background-repeat:no-repeat; 
+                        z-index: 0;
+                        width: 100%;
+                        background-color: #000;
+                    }
+                }
+                .Tiptitle {
+                    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+                    bottom: 25px;
+                    color: white;
+                    left: 5px;
+                    padding: 1px 5px;
+                    position: absolute;
+                    width: calc(100% - 10px);
+                    z-index: 1;
+                }
+            }
+                .card{
+                    .card-title-md{
+                        font-size: 15px;
+                    }
+                }
+            .viewMore.button-md{
+                
+                    background-color: #4eccd8;//mytips
+                    // background-color: #bba1d0;//yoga
+                    // background-color: #a27cbd;//beauty
+                    // background-color: #c3696b;//recipie
+                    // background-color: #2cb26d;//fitness
+                
+            }
+            
+        }
+
+        
+ 
+    }
+}
