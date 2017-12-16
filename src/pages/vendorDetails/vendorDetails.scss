@@ -117,7 +117,7 @@ page-vendorDetails {
                         height: 150px;
                         background-position: center;
                         background-size: cover;
-                        background-repeat:no-repeat; 
+                        background-repeat: no-repeat;
                         z-index: 0;
                         width: 100%;
                         background-color: #000;
@@ -134,24 +134,19 @@ page-vendorDetails {
                     z-index: 1;
                 }
             }
-                .card{
-                    .card-title-md{
-                        font-size: 15px;
-                    }
+            .card {
+                .card-title-md {
+                    font-size: 15px;
                 }
-            .viewMore.button-md{
-                
-                    background-color: #4eccd8;//mytips
-                    // background-color: #bba1d0;//yoga
-                    // background-color: #a27cbd;//beauty
-                    // background-color: #c3696b;//recipie
-                    // background-color: #2cb26d;//fitness
-                
             }
-            
+            .viewMore.button-md {
+                // CHANGE HERE
+                background-color: #4eccd8; //mytips
+                // background-color: #bba1d0; //yoga
+                // background-color: #a27cbd; //beauty
+                // background-color: #c3696b; //recipie
+                // background-color: #2cb26d; //fitness
+            }
         }
-
-        
- 
     }
 }

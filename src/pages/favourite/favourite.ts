@@ -35,6 +35,7 @@ export class Favourite {
     public tipsService: TipsService
   ) {
     this.loadCategory();
+    // CHANGE HERE
      this.currentCategoryId = this.tipsService.currentCategoryId;
     // for single category
     // this.categoryid = this.tipsService.categoryid;
@@ -77,11 +78,13 @@ export class Favourite {
           console.log( this.fav);
             val.favourites = [];
            this.fav.forEach(function (element) {
-            //  console.log(JSON.stringify(element));
-             console.log(element.category +"favourites"+ val.cateName);
+                // For single category
                 if (element.category == val.cateName) {
                  val.favourites.push(element);
                 }
+
+                // For All Categories
+                // val.favourites.push(element);
            })
           // this.favourites.reverse();
           loader.dismiss();

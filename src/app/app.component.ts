@@ -76,7 +76,7 @@ export class MyApp {
     console.log("Submitting form", this.gform.value);
     event.preventDefault();
   }
-
+// CHANGE HERE 
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
