@@ -68,7 +68,7 @@ export class MyApp {
       AdMob.createBanner(options).then(() => {
         AdMob.showBanner(8);
       });
-      this.initPushNotification();
+      // this.initPushNotification();
     });
   }
 

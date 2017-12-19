@@ -79,12 +79,12 @@ export class Favourite {
             val.favourites = [];
            this.fav.forEach(function (element) {
                 // For single category
-                if (element.category == val.cateName) {
-                 val.favourites.push(element);
-                }
+                // if (element.category == val.cateName) {
+                //  val.favourites.push(element);
+                // }
 
                 // For All Categories
-                // val.favourites.push(element);
+                val.favourites.push(element);
            })
           // this.favourites.reverse();
           loader.dismiss();
