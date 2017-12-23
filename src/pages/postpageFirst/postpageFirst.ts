@@ -71,6 +71,8 @@ export class PostpageFirst {
     this.loadTips();
     this.deviceId = tipsService.getDeviceDetails();
     this.videoUrl = "";
+
+    // CHANGE HERE 
     // for all categories
     this.categoryid = this.tipsService.currentCategoryId;
 
@@ -160,6 +162,7 @@ export class PostpageFirst {
   searchItems() {
     this.keyboard.close();
     this.content.scrollToTop();
+    // CHANGE HERE 
     // for all categories
     this.tipsService.search(this.searchTerm,0,10)
 
@@ -177,6 +180,7 @@ export class PostpageFirst {
     console.log("Load more data " + this.tips.length);
     if (!this.search) {
 
+      // CHANGE HERE 
       // for all categories
       this.tipsService.load(this.tips.length, 10)
 

@@ -99,6 +99,7 @@ body ion-app.md {
     position: relative;
     text-align: center;
     font-size: 20px;
+    // CHANGE HERE
     // @include horizontal-gradient(#bba1d0, #5d9cc3); //yoga
     // @include horizontal-gradient(#a27cbd, #eb75bd); //beauty
     // @include horizontal-gradient(#c3696b, #d9b683); //recipie
@@ -439,7 +440,7 @@ ion-img {
 
 .alert-md .alert-head {
     padding: 10px;
-    background: #4ec3e9;//mytips
+    background: #4ec3e9; //mytips
     // background: #bba1d0;//yoga
     // background: #a27cbd;//beauty
     // background: #c3696b;//recipie
@@ -457,7 +458,7 @@ ion-img {
 }
 
 .alert-md .alert-button {
-    color: #4ec3e9;// mytips
+    color: #4ec3e9; // mytips
     // color: #bba1d0;//yoga
     // color: #a27cbd;//beauty
     // color: #c3696b;//recipie
@@ -564,7 +565,8 @@ ion-modal.my-popup {
         }
     }
     .modal-wrapper .scroll-content {
-        @include horizontal-gradient(#4ec3ea,#72f6a6); //mytips
+        @include horizontal-gradient(#4ec3ea,
+        #72f6a6); //mytips
         // @include horizontal-gradient(#bba1d0, #5d9cc3); //yoga
         // @include horizontal-gradient(#a27cbd, #eb75bd); //beauty
         // @include horizontal-gradient(#c3696b, #d9b683); //recipie
@@ -584,7 +586,7 @@ ion-modal.my-popup {
         max-height: 230px;
         border-radius: 2px;
         width: 75vw;
-       height: 37vh;
+        height: 37vh;
         top: 0;
         bottom: 0;
         left: 0;
@@ -751,7 +753,7 @@ ul.comment-actions {
 
 .comment .comment-wrap.replyComment {
     margin-left: 48px;
-    width: calc(100% - 48px); 
+    width: calc(100% - 48px);
 }
 
 .comment .comment-wrap.replyComment .comment-block .Username {

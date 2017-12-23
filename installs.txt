@@ -37,3 +37,8 @@ delete .ionic folder in c:\user\accountname\.ionic & install npm install --save-
 
 GENERATE SHA
 keytool -exportcert -list -v -alias alias_name -keystore my-release-key.keystore
+
+Ionic Build
+ionic cordova build --release android
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-release-unsigned.apk alias_name
+zipalign -v 4 android-release-unsigned.apk mytips.apk

@@ -6,10 +6,11 @@ import { Device } from '@ionic-native/device';
 @Injectable()
 export class TipsService {
 
-  // public categoryid = '59203194f0d7cc0400f47a8c';//fitness
-  // public categoryid = '590ae2c04702ee04008c73e6';//yoga
-  // public categoryid = '5953911baae5b15d7a15d1de';//recipie
+  // public categoryid = '59203194f0d7cc0400f47a8c'; //fitness // CHANGE HERE 
+  // public categoryid = '590ae2c04702ee04008c73e6'; //yoga
+  // public categoryid = '5953911baae5b15d7a15d1de'; //recipie
   // public categoryid = '5920319cf0d7cc0400f47a8d';//beauty
+
   data;
   dataArray: any;
   cate;
@@ -118,7 +119,7 @@ export class TipsService {
         userId: device,
         deviceToken: deviceTokenVal,
         appType: 'all'
-        // appType: this.categoryid
+        // appType: this.categoryid // CHANGE HERE
       }
       this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/map', body)
         .map(res => res.json())

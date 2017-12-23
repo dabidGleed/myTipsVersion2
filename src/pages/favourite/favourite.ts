@@ -2,6 +2,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController, Platform } from 'ionic-angular';
+import { Content, Searchbar } from 'ionic-angular';
+import { ViewChild } from '@angular/core';
+import { Keyboard } from '@ionic-native/keyboard';
 
 // App Imports
 import { Filter } from '../../pipes/filter';
@@ -15,6 +18,8 @@ import { TipsService } from '../../providers/tips-service';
 })
 
 export class Favourite {
+  @ViewChild(Content) content: Content;
+  @ViewChild('focusInput') myInput;
   tips;
   category;
   fav;
@@ -32,9 +37,11 @@ export class Favourite {
     public loading: LoadingController,
     public navCtrl: NavController,
     public navParams: NavParams,
+    private keyboard: Keyboard,
     public tipsService: TipsService
   ) {
     this.loadCategory();
+    // CHANGE HERE
      this.currentCategoryId = this.tipsService.currentCategoryId;
     // for single category
     // this.categoryid = this.tipsService.categoryid;
@@ -77,11 +84,13 @@ export class Favourite {
           console.log( this.fav);
             val.favourites = [];
            this.fav.forEach(function (element) {
-            //  console.log(JSON.stringify(element));
-             console.log(element.category +"favourites"+ val.cateName);
-                if (element.category == val.cateName) {
-                 val.favourites.push(element);
-                }
+                // For single category
+                // if (element.category == val.cateName) {
+                //  val.favourites.push(element);
+                // }
+
+                // For All Categories
+                val.favourites.push(element);
            })
           // this.favourites.reverse();
           loader.dismiss();
@@ -112,22 +121,94 @@ export class Favourite {
     return textVal.slice(0, 30) + "...";
   }
 
-  // To show search box
+  // show search 
   showSearch() {
     this.search = true;
+    setTimeout(() => {
+      this.myInput.setFocus();
+    }, 150);
   }
 
-  // To hide search box
+  // hide search
   hideSearch() {
     this.search = false;
     this.searchTerm = "";
-    // this.setFilteredItems();
+    this.loadFavourites();
+    this.content.scrollToTop();
   }
 
-  // search Filter
-  public setFilteredItems() {
-    this.favourites = this.tipsService.filterItems(this.searchTerm, this.category);
+  // searc for categorywise items
+  searchItems() {
+    this.keyboard.close();
+    this.content.scrollToTop();
+    // CHANGE HERE 
+    // for all categories
+    this.tipsService.search(this.searchTerm,0,10)
+
+    //for single category
+    // this.tipsService.searchCategoryWise(this.categoryid, this.searchTerm, this.tips.length, 10)
+      .then(data => {
+        this.tips = data;
+      });
+
   }
+
+  // Infinite scroll
+  doInfinite(infiniteScroll) {
+    var b = this.tips;
+    console.log("Load more data " + this.tips.length);
+    if (!this.search) {
+
+      // CHANGE HERE 
+      // for all categories
+      this.tipsService.load(this.tips.length, 10)
+
+        //for single category
+        // this.tipsService.categoryWiseTips(this.tips.length,10,this.categoryid)
+        .then(data => {
+          //   console.log(data);
+          //   this.tips.push(data.length);
+          data.forEach(element => {
+            (b.push(element));
+          });
+          console.log(this.tips);
+          infiniteScroll.complete();
+        });
+    }
+    else {
+      // for all categories
+      this.tipsService.search(this.searchTerm, this.tips.length, 10)
+
+        //for single category
+        // this.tipsService.searchCategoryWise(this.categoryid,this.searchTerm,this.tips.length,10)
+        .then(data => {
+          //   console.log(data);
+          //   this.tips.push(data.length);
+          data.forEach(element => {
+            (b.push(element));
+          });
+          console.log(this.tips);
+          infiniteScroll.complete();
+        });
+    }
+  }
+
+  // // To show search box
+  // showSearch() {
+  //   this.search = true;
+  // }
+
+  // // To hide search box
+  // hideSearch() {
+  //   this.search = false;
+  //   this.searchTerm = "";
+  //   // this.setFilteredItems();
+  // }
+
+  // // search Filter
+  // public setFilteredItems() {
+  //   this.favourites = this.tipsService.filterItems(this.searchTerm, this.category);
+  // }
 
   //for page auto reload 
   ionViewDidEnter() {
