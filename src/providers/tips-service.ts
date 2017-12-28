@@ -11,7 +11,8 @@ export class TipsService {
   // public categoryid = '5953911baae5b15d7a15d1de'; //recipie
   // public categoryid = '5920319cf0d7cc0400f47a8d';//beauty
 
-  data;
+  public data;
+  public runningPostVal;
   dataArray: any;
   cate;
   public currentCategoryId;

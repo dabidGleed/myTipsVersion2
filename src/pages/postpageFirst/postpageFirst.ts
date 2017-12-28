@@ -140,7 +140,10 @@ export class PostpageFirst {
       () => {
       })
   }
-
+  ionViewDidLoad() {
+    console.log(this.tipsService.data + "data");
+    console.log("this.tipsService.data");
+  }
 
   // show search 
   showSearch() {
@@ -239,12 +242,13 @@ export class PostpageFirst {
         // this.tipsService.categoryWiseTips(0,10,this.categoryid)
         .then(data => {
           this.tips = data;
+          this.tipsService.data = data;
           //this.tips.reverse();
           loader.dismiss();
-          var a = localStorage.getItem('user');
-          if (!a) {
-            this.presentProfileModal();
-          }
+          // var a = localStorage.getItem('user');
+          // if (!a) {
+          //   this.presentProfileModal();
+          // }
 
           console.log("this is loading");
           var id = setInterval(function () {
@@ -405,8 +409,8 @@ export class PostpageFirst {
     this.navCtrl.push(CategoryList);
   }
 
-  presentProfileModal() {
-    let LoginPageModule = this.modalCtrl.create(LoginPage);
-    LoginPageModule.present();
-  }
+  // presentProfileModal() {
+  //   let LoginPageModule = this.modalCtrl.create(LoginPage);
+  //   LoginPageModule.present();
+  // }
 }
