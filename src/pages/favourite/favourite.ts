@@ -201,7 +201,6 @@ export class Favourite {
   public setFilteredItems() {
     this.favourites = this.tipsService.filterItems(this.searchTerm, this.savedFavorites);
   }
-
   //for page auto reload 
   ionViewDidEnter() {
     this.loadFavourites();

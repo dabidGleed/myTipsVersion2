@@ -310,9 +310,7 @@ export class Postpage {
         this.tipsService.commentList(this.tip.id).then(data => {
           this.comments = data;
           this.tip.comments = this.comments;
-          // console.log(this.comments.length+'/'+this.tip.comments);
           this.commentCount(this.tip);
-          console.log("COMMENT API");
         });
       });
     }

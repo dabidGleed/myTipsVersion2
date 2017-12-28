@@ -1,3 +1,4 @@
+
 // External Imports
 import { AppRate } from '@ionic-native/app-rate';
 import { Component } from '@angular/core';
@@ -13,7 +14,8 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { Network } from '@ionic-native/network';
 import { Subscription } from 'rxjs/Subscription';
 import { ModalController, NavParams, ViewController } from 'ionic-angular';
-// App Imports
+
+// Internal Imports
 import { CategoryList } from '../category-list/category-list';
 import { Favourite } from '../favourite/favourite';
 import { TipsService } from '../../providers/tips-service';

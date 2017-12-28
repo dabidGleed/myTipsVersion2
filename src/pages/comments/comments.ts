@@ -67,16 +67,12 @@ export class CommentsPage {
     this.keyboard.close();
   }
   addComments(comment) {
-    console.log("i am working");
-    console.log(comment);
     localStorage.setItem("commentVal",'1');
-    console.log(localStorage.getItem("commentVal"))
     var a: any = localStorage.getItem("user");
     var dataVal = { commentText: comment, userId: a };
     this.tipsService.comment(this.tip, dataVal).then(data => {
       this.comment.commentText = "";
       this.getComments(this.tip);
-      console.log(data);
     });
   }
 
