@@ -156,18 +156,23 @@ export class Postpage {
 
       });
   }
+  comments;
   commentCount(tip) {
+    
     if (!this.deviceId) {
       this.deviceId = "12345";
     }
+    // localStorage.removeItem("commentVal");
     if (tip.comments && tip.comments.length != 0) {
-      // console.log(tip.comments.length + "maa");
+      
       return tip.comments.length;
     }
     else {
       return 0;
     }
+   
   }
+  
   // To view a post
   view() {
     var listView = this.tip.views;
@@ -294,18 +299,34 @@ export class Postpage {
       if (!val || val <= Date.now()) {
         confirm.present();
       }
-      console.log('Your date is', val);
+      
     });
 
   }
+
+  
+  
   presentProfileModal() {
     var a = localStorage.getItem('user');
     if (!a) {
       this.ProfileModal();
     } else {
+      // if(a == '12345678'){
       let CommentsPageModule = this.modalCtrl.create(CommentsPage, { tipId: this.tip.id });
       CommentsPageModule.present();
+      CommentsPageModule.onDidDismiss(data => {
+        // Do things with data coming from modal, for instance :
+        this.tipsService.commentList(this.tip.id).then(data => {
+          this.comments = data;
+          this.tip.comments = this.comments;
+          // console.log(this.comments.length+'/'+this.tip.comments);
+          this.commentCount(this.tip);
+          console.log("COMMENT API");
+        });
+      });
+      
     }
+  
   }
 
   ProfileModal() {
