@@ -54,8 +54,7 @@ export class LoginPage {
         this.tipsService.socialLogin(userDetails)
           .then(res => {
             var a: any = res;
-            console.log(a.id);
-
+            alert(a.id);
             localStorage.setItem('user', a.id);
             localStorage.setItem('name', a.firstName);
             var b = localStorage.getItem('user');
