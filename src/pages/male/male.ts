@@ -6,7 +6,8 @@ import { NavParams, MenuController } from 'ionic-angular';
 import { LoadingController, Platform } from 'ionic-angular';
 import { Keyboard } from '@ionic-native/keyboard';
 import { ViewChild } from '@angular/core';
-// App Imports
+
+// Internal Imports
 import { CategoryList } from '../category-list/category-list';
 import { Filter } from '../../pipes/filter';
 import { Postpage } from '../postpage/postpage';
@@ -14,6 +15,7 @@ import { PostpageFirst } from '../postpageFirst/postpageFirst';
 import { TipsService } from '../../providers/tips-service';
 import { OrderByPipe } from '../../pipes/orderBy';
 
+// Component Builder
 @IonicPage()
 @Component({
   selector: 'page-male',
@@ -123,9 +125,7 @@ export class Male {
           infiniteScroll.complete();
         });
     }
-
   }
-
 
   // Load more data on scroll infinite
   loadMoreData() {
@@ -210,5 +210,4 @@ export class Male {
         this.tips = data;
       });
   }
-
 }

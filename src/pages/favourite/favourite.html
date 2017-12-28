@@ -15,7 +15,7 @@
     <ion-grid *ngIf="search" class="search">
         <ion-row>
             <ion-col col-12 class="searchbar">
-                <ion-searchbar #focusInput (keyup.enter)="searchItems()" [(ngModel)]="searchTerm">
+                <ion-searchbar #focusInput (keyup.enter)="searchItems()" [(ngModel)]="searchTerm"  (ionInput)="setFilteredItems()">
                 </ion-searchbar>
                 <ion-icon class="closeButton" (click)=" hideSearch()" md="ios-close-circle-outline"></ion-icon>
             </ion-col>
@@ -45,7 +45,7 @@
     <div class="noPost" *ngIf="favourites.length == 0 && searchTerm != ''">
         Sorry,we haven't found any results matching this search.
     </div>
-    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+    </ion-infinite-scroll> -->
 </ion-content>

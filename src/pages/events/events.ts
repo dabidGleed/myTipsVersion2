@@ -1,7 +1,10 @@
+
+// External Impoprts
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { ModalController, NavParams, ViewController } from 'ionic-angular';
 
+// Component Builder
 @Component({
     selector: 'page-events',
     templateUrl: 'events.html',
@@ -51,6 +54,4 @@ export class EventsPage {
         current.setHours(0, 0, 0);
         return date < current;
     };
-
-
 }

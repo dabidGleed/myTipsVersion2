@@ -12,6 +12,8 @@ import { Postpage } from '../postpage/postpage';
 import { TipsService } from '../../providers/tips-service';
 
 @IonicPage()
+
+// Component Builder
 @Component({
   selector: 'page-favourite',
   templateUrl: 'favourite.html',
@@ -68,7 +70,7 @@ export class Favourite {
         });
     });
   }
-
+  savedFavorites = [];
   // For loading the Favourites
   loadFavourites() {
         var val = this;
@@ -92,6 +94,7 @@ export class Favourite {
                 // For All Categories
                 val.favourites.push(element);
            })
+           this.savedFavorites = val.favourites;
           // this.favourites.reverse();
           loader.dismiss();
         });
@@ -153,62 +156,51 @@ export class Favourite {
 
   }
 
-  // Infinite scroll
-  doInfinite(infiniteScroll) {
-    var b = this.tips;
-    console.log("Load more data " + this.tips.length);
-    if (!this.search) {
+  // // Infinite scroll
+  // doInfinite(infiniteScroll) {
+  //   var b = this.tips;
+  //   console.log("Load more data " + this.tips.length);
+  //   if (!this.search) {
 
-      // CHANGE HERE 
-      // for all categories
-      this.tipsService.load(this.tips.length, 10)
+  //     // CHANGE HERE 
+  //     // for all categories
+  //     this.tipsService.load(this.tips.length, 10)
 
-        //for single category
-        // this.tipsService.categoryWiseTips(this.tips.length,10,this.categoryid)
-        .then(data => {
-          //   console.log(data);
-          //   this.tips.push(data.length);
-          data.forEach(element => {
-            (b.push(element));
-          });
-          console.log(this.tips);
-          infiniteScroll.complete();
-        });
-    }
-    else {
-      // for all categories
-      this.tipsService.search(this.searchTerm, this.tips.length, 10)
+  //       //for single category
+  //       // this.tipsService.categoryWiseTips(this.tips.length,10,this.categoryid)
+  //       .then(data => {
+  //         //   console.log(data);
+  //         //   this.tips.push(data.length);
+  //         data.forEach(element => {
+  //           (b.push(element));
+  //         });
+  //         console.log(this.tips);
+  //         infiniteScroll.complete();
+  //       });
+  //   }
+  //   else {
+  //     // for all categories
+  //     this.tipsService.search(this.searchTerm, this.tips.length, 10)
 
-        //for single category
-        // this.tipsService.searchCategoryWise(this.categoryid,this.searchTerm,this.tips.length,10)
-        .then(data => {
-          //   console.log(data);
-          //   this.tips.push(data.length);
-          data.forEach(element => {
-            (b.push(element));
-          });
-          console.log(this.tips);
-          infiniteScroll.complete();
-        });
-    }
+  //       //for single category
+  //       // this.tipsService.searchCategoryWise(this.categoryid,this.searchTerm,this.tips.length,10)
+  //       .then(data => {
+  //         //   console.log(data);
+  //         //   this.tips.push(data.length);
+  //         data.forEach(element => {
+  //           (b.push(element));
+  //         });
+  //         console.log(this.tips);
+  //         infiniteScroll.complete();
+  //       });
+  //   }
+  // }
+
+
+  // search Filter
+  public setFilteredItems() {
+    this.favourites = this.tipsService.filterItems(this.searchTerm, this.savedFavorites);
   }
-
-  // // To show search box
-  // showSearch() {
-  //   this.search = true;
-  // }
-
-  // // To hide search box
-  // hideSearch() {
-  //   this.search = false;
-  //   this.searchTerm = "";
-  //   // this.setFilteredItems();
-  // }
-
-  // // search Filter
-  // public setFilteredItems() {
-  //   this.favourites = this.tipsService.filterItems(this.searchTerm, this.category);
-  // }
 
   //for page auto reload 
   ionViewDidEnter() {

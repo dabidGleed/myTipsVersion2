@@ -166,9 +166,10 @@ export class TipsService {
 
   }
 
-
-  filterItems(searchTerm, category) {
-    return this.data.filter((tip) => {
+  
+  filterItems(searchTerm, filterVar) {
+    
+    return filterVar.filter((tip) => {
       if (tip.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
         return tip;
       }

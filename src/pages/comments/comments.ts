@@ -1,3 +1,5 @@
+
+// External Imports
 import { Component } from "@angular/core";
 import { NavController, Content, NavParams } from "ionic-angular";
 import { ModalController, ViewController } from "ionic-angular";
@@ -6,18 +8,20 @@ import { Renderer } from "@angular/core";
 import { ViewChild } from "@angular/core";
 import { Keyboard } from "@ionic-native/keyboard";
 import { Storage } from "@ionic/storage";
+
+// Internal Imports
 import { TipsService } from "../../providers/tips-service";
 import { LoginPage } from "../login/login";
 import { ReplyCommentPage } from "../reply-comment/reply-comment";
 import { Postpage } from "../postpage/postpage"
 
+// Component Builder
 @Component({
   selector: "page-comments",
   templateUrl: "comments.html"
 })
 
 export class CommentsPage {
-
   tip;
   data;
   deviceId;
@@ -26,15 +30,15 @@ export class CommentsPage {
   @ViewChild(Content) content: Content;
   @ViewChild("focusInputf") myInputB;
   constructor(
+    private keyboard: Keyboard,
+    public modalCtrl: ModalController,
     public navCtrl: NavController,
     public navParams: NavParams,
     public platform: Platform,
-    private storage: Storage,
     public renderer: Renderer,
-    public viewCtrl: ViewController,
-    private keyboard: Keyboard,
+    private storage: Storage,
     public tipsService: TipsService,
-    public modalCtrl: ModalController
+    public viewCtrl: ViewController 
   ) {
     this.tip = navParams.get("tipId");
     this.getComments(this.tip);
@@ -52,7 +56,6 @@ export class CommentsPage {
   ionViewDidLoad() {
     console.log(this.tipsService.data + "data");
     console.log("this.tipsService.data");
-    // this.tipsService.runningPostVal.comments.length+=1;
   }
 
   // Hardware Back button to load Categories Page 

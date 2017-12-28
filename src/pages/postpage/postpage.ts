@@ -11,13 +11,15 @@ import { AlertController } from 'ionic-angular';
 import { ModalController, ViewController } from 'ionic-angular';
 import { Calendar } from '@ionic-native/calendar';
 
-// App Imports
+// Internal Imports
 import { LoginPage } from '../login/login';
 import { CommentsPage } from '../comments/comments';
 import { EventsPage } from '../events/events';
 import { PostListPage } from '../post-list-page/post-list-page';
 import { vendorDetails } from '../vendorDetails/vendorDetails';
 import { TipsService } from '../../providers/tips-service';
+
+// omponent Builder
 @IonicPage()
 @Component({
   selector: 'page-postpage',
@@ -42,6 +44,7 @@ export class Postpage {
   mySlideOptions = {
     pager: true
   };
+
   // Class Constructor
   constructor(
     public alertCtrl: AlertController,
@@ -72,7 +75,6 @@ export class Postpage {
     this.tipsService.getVendor(this.tip.userId)
       .then(
       data => {
-        //  console.log(this.userId);
         this.user = data[0];
         if (!this.user.userDetails) {
           this.user.userDetails = {
@@ -157,20 +159,16 @@ export class Postpage {
       });
   }
   comments;
-  commentCount(tip) {
-    
+  commentCount(tip) {  
     if (!this.deviceId) {
       this.deviceId = "12345";
     }
-    // localStorage.removeItem("commentVal");
-    if (tip.comments && tip.comments.length != 0) {
-      
+    if (tip.comments && tip.comments.length != 0) {   
       return tip.comments.length;
     }
     else {
       return 0;
-    }
-   
+    } 
   }
   
   // To view a post
@@ -222,13 +220,10 @@ export class Postpage {
     toast.present();
   }
 
-
   // playVideo(videoId) {
   //   this.youtube.openVideo(videoId[0]);
   // }
   // 
-
-
 
   // Active and Inactive functionality of Like Button
   iconLike(tipList): any {
@@ -298,14 +293,10 @@ export class Postpage {
     this.storage.get('date').then((val) => {
       if (!val || val <= Date.now()) {
         confirm.present();
-      }
-      
+      }   
     });
-
   }
 
-  
-  
   presentProfileModal() {
     var a = localStorage.getItem('user');
     if (!a) {
@@ -324,18 +315,13 @@ export class Postpage {
           console.log("COMMENT API");
         });
       });
-      
     }
-  
   }
 
   ProfileModal() {
     let LoginPageModule = this.modalCtrl.create(LoginPage);
     LoginPageModule.present();
   }
-  // events(){
-  //   this.navCtrl.push(EventsPage);
-  // }
 
   addEvent(title) {
     var startDate = new Date(); // beware: month 0 = january, 11 = december

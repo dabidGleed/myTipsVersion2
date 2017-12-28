@@ -1,3 +1,4 @@
+
 // External Imports
 import { Component, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -5,7 +6,8 @@ import { IonicPage, NavController, Content } from 'ionic-angular';
 import { LoadingController, Platform } from 'ionic-angular';
 import { NavParams, MenuController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
-// App Imports
+
+// Internal  Imports
 import { CategoryList } from '../category-list/category-list';
 import { Filter } from '../../pipes/filter';
 import { Keyboard } from '@ionic-native/keyboard';
@@ -15,6 +17,7 @@ import { PostpageFirst } from '../postpageFirst/postpageFirst';
 import { TipsService } from '../../providers/tips-service';
 
 @IonicPage()
+// Component Builder
 @Component({
   selector: 'page-female',
   templateUrl: 'female.html'
@@ -129,10 +132,7 @@ export class Female {
           infiniteScroll.complete();
         });
     }
-
-
   }
-
 
   // For loading the Tips
   loadTips() {
