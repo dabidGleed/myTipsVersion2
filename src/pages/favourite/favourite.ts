@@ -107,10 +107,10 @@ export class Favourite {
       postValue: value
     });
   }
-
   // For Category name
   getCategory(catVal) {
     var nameret;
+    console.log(this.categories);
     this.categories.forEach(function (element) {
       if (element.id == catVal) {
         nameret = element.name;
@@ -144,61 +144,11 @@ export class Favourite {
   searchItems() {
     this.keyboard.close();
     this.content.scrollToTop();
-    // CHANGE HERE 
-    // for all categories
-    this.tipsService.search(this.searchTerm,0,10)
-
-    //for single category
-    // this.tipsService.searchCategoryWise(this.categoryid, this.searchTerm, this.tips.length, 10)
-      .then(data => {
-        this.tips = data;
-      });
-
   }
-
-  // // Infinite scroll
-  // doInfinite(infiniteScroll) {
-  //   var b = this.tips;
-  //   console.log("Load more data " + this.tips.length);
-  //   if (!this.search) {
-
-  //     // CHANGE HERE 
-  //     // for all categories
-  //     this.tipsService.load(this.tips.length, 10)
-
-  //       //for single category
-  //       // this.tipsService.categoryWiseTips(this.tips.length,10,this.categoryid)
-  //       .then(data => {
-  //         //   console.log(data);
-  //         //   this.tips.push(data.length);
-  //         data.forEach(element => {
-  //           (b.push(element));
-  //         });
-  //         console.log(this.tips);
-  //         infiniteScroll.complete();
-  //       });
-  //   }
-  //   else {
-  //     // for all categories
-  //     this.tipsService.search(this.searchTerm, this.tips.length, 10)
-
-  //       //for single category
-  //       // this.tipsService.searchCategoryWise(this.categoryid,this.searchTerm,this.tips.length,10)
-  //       .then(data => {
-  //         //   console.log(data);
-  //         //   this.tips.push(data.length);
-  //         data.forEach(element => {
-  //           (b.push(element));
-  //         });
-  //         console.log(this.tips);
-  //         infiniteScroll.complete();
-  //       });
-  //   }
-  // }
-
 
   // search Filter
   public setFilteredItems() {
+
     this.favourites = this.tipsService.filterItems(this.searchTerm, this.savedFavorites);
   }
   //for page auto reload 

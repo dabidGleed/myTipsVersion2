@@ -72,7 +72,7 @@ export class vendorDetails {
 
   // for load tips
   loadTips() {
-    this.tipsService.allTips(this.user.id, 0, 2)
+    this.tipsService.allTips(this.user.id, 0, 6)
       .then(data => {
         console.log(data + "data");
         this.tips = data;
